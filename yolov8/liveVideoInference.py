@@ -20,6 +20,9 @@ def detection():
 
     while True:
         ret, frame = cap.read()
+
+        frame = cv2.flip(frame, 1)
+
         result = model(frame, agnostic_nms=True)[0]
         detections = sv.Detections.from_yolov8(result)
 
